@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Title, Item, Label, Percentage } from './Statistics.styled';
 
 const Statistics = ({ title, stats }) => {
+  console.log('🚀 ~ stats:', stats);
   return (
     <Box>
       {title ? <Title>{title}</Title> : null}
@@ -24,5 +25,11 @@ export default Statistics;
 
 Statistics.propTypes = {
   title: PropTypes.string,
-  stats: PropTypes.array.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
 };
